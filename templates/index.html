@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HelloMicroservice</title>
+    <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
+    <script>
+ 
+         Pusher.logToConsole = true;
+         const pushKey = "cc7e790e1675802bcca8"; 
+         const pushCluster = "ap2";
+         const pushChannel = "hellomicro";
+         
+         var pushHelloService = new Pusher(
+             pushKey, { 
+                 cluster : pushCluster
+             }
+         );
+ 
+         var subcribeHelloEvent = 
+         pushHelloService.subscribe(pushChannel);
+         subcribeHelloEvent.bind(
+             'my-event', function(data){
+                 alert(JSON.stringify(data));
+             }
+         );
+  
+     </script> 
+</head>
+<body>
+    Welcome to Hello-Microservice pusher-channel service activate
+    <p>
+        Subcribe Channel 
+        <code>
+            hellomicro     
+        </code>
+        <code>
+            my-event
+        </code>
+    </p> 
+   </body>
+</html>
